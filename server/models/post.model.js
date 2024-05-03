@@ -22,7 +22,7 @@ const postSchema = new mongoose.Schema(
     nextEarningDate: {
       type: Date,
       default: () =>
-        new Date(new Date().getFullYear, new Date().getMonth() + 1, 1),
+        new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1),
     },
     thisMonthEarnings: {
       type: Number,
