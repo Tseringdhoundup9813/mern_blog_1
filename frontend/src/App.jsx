@@ -12,6 +12,7 @@ import PostList from "./components/posts/PostList";
 import Home from "./components/home/Home";
 import RootLayout from "./components/layout/RootLayout";
 import UpdatePosts from "./components/posts/UpdatePosts";
+import PostDetail from "./components/posts/PostDetail";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
@@ -19,6 +20,7 @@ const router = createBrowserRouter(
       <Route path="/posts/create" element={<CreatePost />} />
       <Route path="/posts/list" element={<PostList />} />
       <Route path="posts/update/:id" element={<UpdatePosts />} />
+      <Route path="posts/detail/:id" element={<PostDetail />} />
     </Route>
   )
 );

@@ -18,6 +18,7 @@ function PostList() {
       {data?.data.map((item) => {
         return (
           <div>
+            <NavLink to={`/posts/detail/${item._id}`}>Detail</NavLink>
             <h2>{item.title}</h2>
             <p>{item.description}</p>
             <NavLink to={`/posts/update/${item._id}`}>Edit Posts</NavLink>
