@@ -97,6 +97,22 @@ app.put("/api/v1/posts/:id", async (req, res) => {
   }
 });
 
+app.delete("/api/v1/posts/delete/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deletePost = await postModel.findByIdAndDelete(id);
+    res.status(204).json({
+      status: "success",
+      message: "successfully deleted posts",
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: "fail",
+      message: err.message,
+    });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`SERVER IS RUNNING ON PORT ${PORT}`);
 });
