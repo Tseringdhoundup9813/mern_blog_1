@@ -1,10 +1,13 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetcPostAPi } from "../../services/post.api";
+import { NavLink } from "react-router-dom";
 function PostList() {
   const { data, isLoading, isError, error, isSuccess } = useQuery({
     queryKey: ["list-posts"],
     queryFn: fetcPostAPi,
+    staleTime: 10000 * 10,
+    refetchOnWindowFocus: false,
   });
   return (
     <div>
@@ -17,6 +20,7 @@ function PostList() {
           <div>
             <h2>{item.title}</h2>
             <p>{item.description}</p>
+            <NavLink to={`/posts/update/${item._id}`}>Edit Posts</NavLink>
           </div>
         );
       })}

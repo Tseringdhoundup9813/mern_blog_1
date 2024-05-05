@@ -12,3 +12,16 @@ export const fetcPostAPi = async () => {
   const res = await axios.get(BASE_URL);
   return res.data;
 };
+export const fetchSinglePostApi = async (id) => {
+  const res = await axios.get(`${BASE_URL}/${id}`);
+  return res.data;
+};
+
+export const updatePostApi = async ({ id, title, description }) => {
+  console.log(title, id, description);
+  const res = await axios.put(`${BASE_URL}/${id}`, {
+    title: title,
+    description: description,
+  });
+  return res.data;
+};

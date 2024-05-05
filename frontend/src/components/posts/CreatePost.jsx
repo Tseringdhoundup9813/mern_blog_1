@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { createPostApi } from "../../services/post.api";
 
-export const CreatePost = () => {
+export default function CreatePost() {
   const postMutation = useMutation({
     mutationKey: ["create-post"],
     mutationFn: createPostApi,
@@ -62,4 +62,4 @@ export const CreatePost = () => {
       </form>
     </div>
   );
-};
+}
