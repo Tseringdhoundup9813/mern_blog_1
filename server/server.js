@@ -51,6 +51,51 @@ app.get("/api/v1/posts", async (req, res, next) => {
     });
   }
 });
+// GET single app
+app.get("/api/v1/posts/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const singleData = await postModel.findById(id);
+    res.status(200).json({
+      status: "success",
+      message: "succesully fetch data",
+      data: singleData,
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: "fail",
+      message: err.message,
+    });
+  }
+});
+
+// update post
+app.put("/api/v1/posts/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, description } = req.body;
+    const postFound = await postModel.findById(id);
+    if (!postFound) {
+      throw new Error("Post not found");
+    }
+    // update
+    const updatedData = await postModel.findByIdAndUpdate(
+      id,
+      { title, description },
+      { new: true }
+    );
+    res.status(200).json({
+      status: "success",
+      message: "successfully updated post",
+      data: updatedData,
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: "fail",
+      message: err.message,
+    });
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`SERVER IS RUNNING ON PORT ${PORT}`);
