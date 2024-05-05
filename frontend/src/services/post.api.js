@@ -16,6 +16,10 @@ export const fetchSinglePostApi = async (id) => {
   const res = await axios.get(`${BASE_URL}/${id}`);
   return res.data;
 };
+export const deletePostApi = async (id) => {
+  const res = await axios.delete(`${BASE_URL}/delete/${id}`);
+  return res.data;
+};
 
 export const updatePostApi = async ({ id, title, description }) => {
   console.log(title, id, description);

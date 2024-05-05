@@ -101,6 +101,7 @@ app.delete("/api/v1/posts/delete/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const deletePost = await postModel.findByIdAndDelete(id);
+    console.log(deletePost);
     res.status(204).json({
       status: "success",
       message: "successfully deleted posts",
